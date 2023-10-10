@@ -50,9 +50,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       liElement.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start');
       const starsHTML = getStarsHTML(movie.vote_average); // Convierte vote_average a estrellas
 
+      let movieGenres = '';
+      movie.genres.forEach(element => {
+        movieGenres += `${element.name}, `
 
+      });
+      console.log(movieGenres);
       liElement.innerHTML = `<div class="ms-2 me-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-      <div class="fw-bold text-light bg-dark">${movie.title}</div>
+      <div class="fw-bold text-light bg-dark"> ${movie.title}</div>
         
         <p>${movie.tagline} </p>
         </div>
@@ -67,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="offcanvas-body">
             <div class="detailsOffCanvas">
               <p>${movie.overview}</p>
-              <p>Géneros: ${movie.genres}</p>
+              <p>Géneros: ${movieGenres}</p>
             </div>
           </div>
           <div class="dropdown mt-3 d-flex justify-content-end p-2">
